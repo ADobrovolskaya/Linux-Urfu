@@ -1,0 +1,37 @@
+1.
+sudo useradd John
+sudo useradd Daisy
+sudo useradd Michael
+sudo passwd John
+sudo passwd Daisy
+sudo passwd Michael
+sudo groupadd /var/tmp/group1
+sudo groupadd /var/tmp/group2
+sudo usermod -a -G /var/tmp/group1 John
+sudo usermod -a -G /var/tmp/group2 Michael
+sudo usermod -a -G /var/tmp/group2 Daisy
+chmod ugo+rwx /var/tmp/group1
+chmod ugo+rwx /var/tmp/group2
+
+2.
+sudo pip install numpy
+mkdir /var/tmp/John_App
+python3 -m venv /var/tmp/group1/John_App/John_Venv
+source /var/tmp/group1/John_App/John_Venv/bin/activate
+nano john_app.py
+import random
+n = 10
+array = [random.randint(0, 9) for i in range(n)]
+print("array:", array)
+python3 john_app.py
+
+3.
+mkdir /var/tmp/Application_Main
+python3 -m venv /var/tmp/group2/Application_Main/Application_Env
+source /var/tmp/group2/Application_Main/Application_Env/bin/activate
+pip3 install requests
+nano daisy_michael_app.py
+import requests
+resp = requests.get('https://urfu.ru/ru')
+print(resp.headers)
+python3 daisy_michael_app.py
